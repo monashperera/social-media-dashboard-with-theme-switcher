@@ -1,0 +1,397 @@
+:root {
+
+    /* Primary */
+    --pr-up-l-green: hsl(163, 72%, 41%);
+    --pr-down-b-red: hsl(356, 69%, 56%);
+    --pr-facebook: hsl(208, 92%, 53%);
+    --pr-twitter: hsl(203, 89%, 53%);
+    --pr-instagram-start: hsl(37, 97%, 70%);
+    --pr-instagram-end: hsl(329, 70%, 58%);
+    --pr-youtube: hsl(348, 97%, 39%);
+
+    /* Neutral */
+    --ne-bg-color: hsl(230, 17%, 14%);
+    --ne-bg-top-color: hsl(232, 19%, 15%);
+    --ne-bg-card: hsl(228, 28%, 20%);
+    --ne-bg2-card: hsl(228, 26%, 27%);
+    --ne-card-heading-color: hsl(228, 34%, 66%);
+    --ne-text-color: hsl(0, 0%, 100%);
+
+    --ne-button-bg-start: hsl(210, 78%, 56%);
+    --ne-button-bg-end: hsl(146, 68%, 55%);
+    --ne-button-bg2-start: hsl(210, 78%, 56%);
+    --ne-button-bg2-end: hsl(146, 68%, 55%);
+    --ne-toggle-bg-color: hsl(232, 19%, 15%);
+    --ne-button-shadow-color: hsl(0, 0%, 100%);
+
+
+    --fw-regular: 400;
+    --fw-bold: 700;
+    --fs-overview-heading: 0.875rem;
+    --border-radius: 16px;
+}
+
+[data-theme='light'] {
+    --ne-bg-color: hsl(0, 0%, 100%);
+    --ne-bg-top-color: hsl(225, 100%, 98%);
+    --ne-bg-card: hsl(227, 47%, 96%);
+    --ne-bg2-card: hsl(232, 33%, 91%);
+    --ne-card-heading-color: hsl(228, 12%, 44%);
+    --ne-text-color: hsl(230, 17%, 14%);
+
+    --ne-button-bg-start: hsl(230, 22%, 74%);
+    --ne-button-bg-end: hsl(230, 22%, 74%);
+    --ne-toggle-bg-color: hsl(0, 0%, 95%);
+    --ne-button-shadow-color: hsl(230, 17%, 14%);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+html, body {
+    height: 100vh;
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--ne-bg-color);
+    color: var(--ne-text-color);
+}
+
+body::after {
+    --border-radius: 40px;
+    position: absolute;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 30vh;
+    background-color: var(--ne-bg-top-color);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    box-shadow: 0 4px 10px #0f0f0f10;
+    z-index: -1;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+.attribution {
+    padding: 1rem;
+    color: var(--white);
+    font-size: 0.875rem;
+    text-align: center;
+    -webkit-animation: fade-in 700ms ease-in;
+    animation: fade-in 700ms ease-in;
+}
+
+.attribution a {
+    color: var(--ne-pale-blue);
+}
+
+.dashboard-container {
+    width: 1100px;
+    height: auto;
+    padding: 3rem 0rem;
+    -webkit-animation: fade-in 500ms ease-in;
+    animation: fade-in 500ms ease-in;
+}
+
+.header-container p {
+    padding-top: 0.3rem;
+    color: var(--ne-card-heading-color);
+    font-weight: var(--fw-bold);
+}
+
+.btn-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-container > span {
+    margin-right: 1rem;
+}
+
+.btn-container input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+}
+
+.btn-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 25px;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, var(--ne-button-bg-start), var(--ne-button-bg-end));
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+            transition: 0.3s;
+}
+
+.btn-toggle:is(:hover, :focus-visible){
+    box-shadow: 0 0 2px var(--ne-button-shadow-color);
+    background-image: linear-gradient(to right, var(--ne-button-bg2-start), var(--ne-button-bg2-end));
+    -webkit-transition: background-image 0.3s;
+            transition: background-image 0.3s;
+}
+
+.btn-toggle::after {
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    content: '';
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: var(--ne-toggle-bg-color);
+    background-image: url(../images/LineMdMoonSimpleFilled.svg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transition: transform 0.4s, background-image 0.01s;
+            transition: transform 0.4s, background-image 0.01s;
+}
+
+input[type=checkbox]:checked + .btn-toggle::after {
+    background-image: url(../images/LineMdSunnyFilled.svg);
+    transform: translateX(22px);
+}
+
+.main-info-container {
+    padding: 3rem 0rem;
+}
+
+.main-info-container > .row {
+    gap: 2rem;
+}
+
+.card-main {
+    display: flex;
+    align-items: flex-end;
+    /* width: 255px; */
+    height: 215px;
+    padding: 0rem;
+    border-radius: 7px;
+    background-color: var(--pr-facebook);
+    cursor: pointer;
+    box-shadow: 0 0 7px hsla(0, 0%, 13%, 0.171);
+}
+
+.bg-facebook {
+    background-color: var(--pr-facebook);
+}
+
+.bg-twitter {
+    background-color: var(--pr-twitter);
+}
+
+.bg-instagram {
+    background-image: linear-gradient(to right, var(--pr-instagram-start), var(--pr-instagram-end));
+}
+
+.bg-youtube {
+    background-color: var(--pr-youtube);
+}
+
+.card-container {
+    --border-bottom-radius: 5px;
+    width: 100%;
+    height: 98%;
+    padding: 2rem;
+    border-bottom-left-radius: var(--border-bottom-radius);
+    border-bottom-right-radius: var(--border-bottom-radius);
+    background-color: var(--ne-bg-card);
+    -webkit-transition: background-color 0.4s;
+            transition: background-color 0.4s;
+}
+
+.card-container:is(:hover, :focus-visible) {
+    background-color: var(--ne-bg2-card);
+}
+
+.card-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;
+    color: var(--ne-card-heading-color);
+}
+
+.card-user span {
+    font-size: var(--fs-overview-heading);
+}
+
+.card-count {
+    padding-bottom: 1.5rem;
+    text-align: center;
+}
+
+.card-count > p:first-child {
+    font-size: 3rem;
+    font-weight: var(--fw-bold);
+}
+
+.card-count > p:last-child {
+    color: var(--ne-card-heading-color);
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.card-stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-stat span {
+    font-size: var(--fs-overview-heading);
+    font-weight: var(--fw-bold);
+}
+
+.stat-up {
+    color: var(--pr-up-l-green);
+}
+
+.stat-down {
+    color: var(--pr-down-b-red);
+}
+
+.overview-container .row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.card-overview {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 7px;
+    padding: 2rem;
+    background-color: var(--ne-bg-card);
+    box-shadow: 0 0 7px hsla(0, 0%, 13%, 0.171);
+    cursor: pointer;
+    -webkit-transition: background-color 0.4s;
+            transition: background-color 0.4s;
+}
+
+.card-overview:is(:hover, :focus-visible) {
+    background-color: var(--ne-bg2-card);
+}
+
+.card-overview > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-overview-info  span:first-child {
+    color: var(--ne-card-heading-color);
+    font-size: var(--fs-overview-heading);
+}
+
+.card-overview-stat span:first-child {
+    font-size: 1.8rem;
+    font-weight: var(--fw-bold);
+}
+
+.card-overview-stat p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--fs-overview-heading);
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .dashboard-container {
+        width: 100%;
+        height: auto;
+        padding: 3rem 1.4rem;
+    }
+
+    .overview-container .row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+
+@media only screen and (max-width: 677px) {
+
+    .dashboard-container {
+        width: 100%;
+        height: auto;
+        padding: 3rem 1.4rem;
+    }
+
+    .header-container .row > div:first-child {
+        padding-bottom: 2rem !important;
+        border-bottom: 1px solid var(--ne-card-heading-color);
+    }
+
+    .header-container h1 {
+        font-size: 1.7rem !important;
+    }
+
+    .header-container .row > div:last-child {
+        padding-top: 2rem !important;
+    }
+
+    .btn-container {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .overview-container .row {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+    
+}
