@@ -44,7 +44,7 @@ Mobile Preview - Light Mode
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://monashperera.github.io/social-media-dashboard-with-theme-switcher/](https://monashperera.github.io/social-media-dashboard-with-theme-switcher/)
 
 ## My process
 
